@@ -1,5 +1,6 @@
 package xml;
 
+import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
@@ -55,8 +56,36 @@ public class ParseXmlDemo {
                 Element nameEle = empEle.element("name");
                 //2获取<name>标签中间的文本
                 String ename = nameEle.getText();
-                System.out.println(ename);
+//                System.out.println("姓名为："+ename);
+
+                Element ageEle = empEle.element("age");
+                int age = Integer.parseInt(
+                        ageEle.getText()
+                );
+//                System.out.println("年龄为："+age);
+
+                String gender = empEle.elementText("gender");
+
+//                System.out.println("性别为："+gender);
+
+                int salary = Integer.parseInt(
+                        empEle.elementText("salary")
+                );
+//                System.out.println("工资为："+salary);
+
+//                Attribute attr = empEle.attribute("id");
+//                int id = Integer.parseInt(attr.getValue());
+
+                int id = Integer.parseInt(
+                        empEle.attributeValue("id")
+                );
+
+                System.out.println(id+","+ename+","+gender+","+age+","+salary);
+
             }
+
+
+
 
 
 
